@@ -25,7 +25,13 @@ jobs:
       - run: npm install
       - run: npm run verify
       - run: npm test
-      - run: npm run build
+      # ===== 2. Supabase 연결값을 Vite 빌드에 전달 시작 =====
+      - name: Build React app with Supabase configuration
+        env:
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        run: npm run build
+      # ===== 2. Supabase 연결값을 Vite 빌드에 전달 끝 =====
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
