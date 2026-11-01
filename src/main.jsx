@@ -1,19 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import App from './App'
 import { AppProvider } from './context/AppContext'
 import { AuthProvider } from './context/AuthContext'
 import './styles.css'
 
+// ===== GitHub Pages 새로고침을 지원하는 HashRouter 시작 =====
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <AppProvider>
         <AuthProvider>
           <App />
         </AuthProvider>
       </AppProvider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 )
+
+// ===== GitHub Pages HashRouter 끝 =====
