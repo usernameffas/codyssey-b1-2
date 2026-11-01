@@ -10,6 +10,8 @@ import ItemEditPage from './pages/ItemEditPage'
 import ProfilePage from './pages/ProfilePage'
 import NotFoundPage from './pages/NotFoundPage'
 
+// ===== 1. B1-2 전체 페이지 라우팅 시작 =====
+// URL 경로에 따라 React가 어떤 페이지 컴포넌트를 화면에 그릴지 결정합니다.
 export default function App() {
   return (
     <Routes>
@@ -28,3 +30,5 @@ export default function App() {
     </Routes>
   )
 }
+
+// ===== 1. B1-2 전체 페이지 라우팅 끝 =====
