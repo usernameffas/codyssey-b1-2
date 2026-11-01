@@ -226,3 +226,12 @@ Output Directory: `dist`
 11. 모바일 폭에서 헤더/카드/폼 확인
 
 Supabase 프로젝트 URL과 anon key는 계정에 귀속되는 외부 자격정보이므로 저장소에는 포함하지 않습니다.
+
+## 홈페이지 배포 현황 (2026-11-02)
+
+- GitHub Pages 빌드 워크플로: `.github/workflows/deploy-pages.yml`
+- 예상 공개 주소: https://usernameffas.github.io/codyssey-b1-2/
+- 경로: GitHub Pages에서 Vite `base: '/codyssey-b1-2/'` 및 `HashRouter` 사용. 예: `/#/items`
+- 코드 업데이트 후 배포 워크플로 성공과 실제 URL 접속을 확인해야 합니다. GitHub Pages 설정에서 Source를 **GitHub Actions**로 선택해야 할 수 있습니다.
+- **중요:** Supabase 프로젝트 환경변수 미등록 시 홈페이지 소개 화면은 표시되지만 로그인과 원격 CRUD는 사용할 수 없습니다. 원격 CRUD 완료 판정은 Supabase 연동 및 실행 검증 이후에 합니다.
+- 제출 전: 실제 배포 URL, 데스크톱/모바일 스크린샷, 로그인·CRUD·보호 라우트 결과를 확인하십시오.
