@@ -35,6 +35,9 @@ export default function LoginPage() {
     return <ErrorState message="Supabase 환경변수가 없습니다. README의 백엔드 설정 절차에 따라 .env를 설정해야 로그인과 CRUD가 동작합니다." />
   }
 
+  // 인증 후 현재 배포된 웹사이트로 돌아오도록 경로를 명시합니다.
+  const emailRedirectTo = `${window.location.origin}${import.meta.env.BASE_URL}`
+
   // ===== 2. 회원가입 직후 인증 대기 화면과 로그인 처리 시작 =====
   async function submit(event) {
     event.preventDefault()
@@ -47,7 +50,7 @@ export default function LoginPage() {
     setSubmitting(true)
     try {
       if (mode === 'signup') {
-        const { data, error: authError } = await supabase.auth.signUp({ email: email.trim(), password })
+        const { data, error: authError } = await supabase.auth.signUp({ email: email.trim(), password, options: { emailRedirectTo } })
         if (authError) throw authError
         if (data.session) {
           notify('회원가입과 로그인이 완료되었습니다.')
@@ -77,7 +80,7 @@ export default function LoginPage() {
     if (!email.trim()) { setError('먼저 이메일 주소를 입력하세요.'); return }
     setResending(true)
     try {
-      const { error: resendError } = await supabase.auth.resend({ type: 'signup', email: email.trim() })
+      const { error: resendError } = await supabase.auth.resend({ type: 'signup', email: email.trim(), options: { emailRedirectTo } })
       if (resendError) throw resendError
       setSuccess('인증 메일 재발송을 요청했습니다. 받은편지함과 스팸함을 확인해 주세요.')
     } catch (err) {
