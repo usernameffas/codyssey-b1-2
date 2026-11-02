@@ -107,6 +107,15 @@ export default function LoginPage() {
         <>
           {mode === 'signup' && <p>가입 후 이메일로 받은 인증 링크를 눌러야 로그인할 수 있습니다.</p>}
           {mode === 'login' && <p>회원가입 후 이메일 인증을 완료했다면 로그인하세요.</p>}
+          {mode === 'login' && /email not confirmed|이메일 인증이 필요/i.test(error) && (
+            <div className="form-card" aria-live="polite">
+              <p>아직 이메일 인증이 완료되지 않았습니다. 이전 메일을 찾지 않아도 새 인증 메일을 요청할 수 있습니다.</p>
+              <Button type="button" onClick={resendConfirmation} disabled={resending}>
+                {resending ? '전송 중...' : '인증 메일 다시 보내기'}
+              </Button>
+              {success && <p role="status">{success}</p>}
+            </div>
+          )}
           <form className="form-card" onSubmit={submit}>
             <TextInput label="이메일" type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <TextInput label="비밀번호" type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
