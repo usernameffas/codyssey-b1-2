@@ -5,6 +5,7 @@ import App from './App'
 import { AppProvider } from './context/AppContext'
 import { AuthProvider } from './context/AuthContext'
 import './styles.css'
+import './calendar.css'
 
 // ===== GitHub Pages 새로고침을 지원하는 HashRouter 시작 =====
 ReactDOM.createRoot(document.getElementById('root')).render(
