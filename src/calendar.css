@@ -1,0 +1,40 @@
+/* Study archive calendar */
+.archive{--archive-green:#195845;--archive-soft:#e8f0e8}
+.archive-header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}
+.archive-header h1{font-size:2rem;margin:3px 0}
+.archive-toolbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:17px}
+.archive-month-controls,.archive-views{display:flex;align-items:center;gap:8px}
+.archive-month-controls strong{min-width:130px;text-align:center}
+.archive-month-controls button,.archive-views button{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:9px 12px;border-radius:9px;cursor:pointer}
+.archive-views button[aria-pressed="true"]{background:var(--archive-green);color:#fff}
+.archive-toolbar input{padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--text);margin-left:auto;width:min(260px,100%)}
+.archive-workspace{display:grid;grid-template-columns:minmax(0,1fr) 286px;gap:16px;align-items:start}
+.archive-calendar,.archive-side{border:1px solid var(--line);border-radius:17px;background:var(--panel);padding:13px;min-width:0}
+.archive-weekdays,.archive-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.archive-weekdays span{text-align:center;padding:10px 0;color:var(--muted);font-weight:800;font-size:.84rem}
+.archive-day{min-height:135px;display:flex;flex-direction:column;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:5px;min-width:0}
+.archive-day.archive-selected{background:var(--archive-soft);outline:2px solid var(--archive-green)}
+.archive-day.archive-outside{opacity:.5}
+.archive-date{align-self:flex-start;border:0;background:none;color:var(--text);cursor:pointer;font-weight:800;padding:4px}
+.archive-day-records{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.archive-record{border:0;border-radius:5px;background:var(--panel);color:var(--text);text-align:left;cursor:pointer;font-size:.75rem;padding:5px;max-width:100%;min-width:0}
+.archive-record span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.archive-record:hover{background:var(--archive-soft)}
+.archive-day-add{align-self:flex-end;text-decoration:none;color:var(--archive-green);font-weight:bold;font-size:1.1rem}
+.archive-grid-week .archive-day{min-height:350px}
+.archive-grid-week .archive-record span{white-space:normal;overflow-wrap:anywhere}
+.archive-side{padding:20px;position:sticky;top:90px;max-height:calc(100vh - 100px);overflow-y:auto}
+.archive-side h2{margin:6px 0}
+.archive-side-count,.archive-empty{color:var(--muted)}
+.archive-side-add{width:100%;margin:15px 0}
+.archive-side-item{border-top:1px solid var(--line);padding:16px 0}
+.archive-side-item small{color:var(--archive-green);font-weight:800}
+.archive-side-item h3{font-size:1rem;margin:8px 0}
+.archive-side-item h3 a{text-decoration:none}
+.archive-side-item p{font-size:.85rem;white-space:pre-wrap;color:var(--muted);max-height:100px;overflow:hidden}
+.archive-side-actions{display:flex;gap:16px;align-items:center}
+.archive-side-actions button,.archive-side-actions a{color:var(--archive-green);background:none;padding:0;border:0;text-decoration:none;cursor:pointer;font-weight:700}
+.archive-side-actions button{color:var(--danger)}
+@media(min-width:1200px){.container:has(.archive){width:min(1500px,calc(100% - 48px))}.archive-day{min-height:155px}}
+@media(max-width:950px){.archive-workspace{grid-template-columns:1fr}.archive-side{position:static;max-height:none}}
+@media(max-width:680px){.archive-header{align-items:flex-start}.archive-toolbar input{margin-left:0;width:100%}.archive-calendar{overflow-x:auto}.archive-weekdays,.archive-grid{min-width:690px}}
