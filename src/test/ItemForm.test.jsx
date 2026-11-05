@@ -26,10 +26,11 @@ describe('ItemForm', () => {
     expect(screen.getByText('React 복습')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: '저장하기' }))
-    expect(onSubmit).toHaveBeenCalledWith({
+    expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({
       title: 'React 복습',
       category: '기타',
-      content: 'useEffect 흐름을 정리했다.'
-    })
+      content: 'useEffect 흐름을 정리했다.',
+      studied_on: expect.stringMatching(/^\\d{4}-\\d{2}-\\d{2}$/)
+    }))
   })
 })
