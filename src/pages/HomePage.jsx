@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { isSupabaseConfigured } from '../lib/supabase'
 
 // ===== 1. 홈페이지 소개 및 시작 버튼 시작 =====
 export default function HomePage() {
   const { user } = useAuth()
+  if (user) return <Navigate to="/items" replace />
   const features = [
     { title: 'React Router', desc: '주소에 따라 홈·목록·상세·등록·수정 화면을 전환합니다.' },
     { title: 'CRUD', desc: '기록을 만들고(Create), 읽고(Read), 수정하고(Update), 삭제(Delete)합니다.' },
