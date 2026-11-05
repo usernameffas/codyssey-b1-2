@@ -30,7 +30,7 @@ describe('ItemForm', () => {
       title: 'React 복습',
       category: '기타',
       content: 'useEffect 흐름을 정리했다.',
-      studied_on: expect.stringMatching(/^\\d{4}-\\d{2}-\\d{2}$/)
+      studied_on: expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/)
     }))
   })
 })
